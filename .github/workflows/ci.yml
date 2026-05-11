@@ -1,0 +1,113 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php: '8.2'
+            laravel: '^12.55.0'
+            testbench: '^10.11'
+            database: sqlite
+          - php: '8.3'
+            laravel: '^13.0'
+            testbench: '^11.0'
+            database: sqlite
+          - php: '8.2'
+            laravel: '^12.55.0'
+            testbench: '^10.11'
+            database: mysql
+          - php: '8.2'
+            laravel: '^12.55.0'
+            testbench: '^10.11'
+            database: pgsql
+          - php: '8.3'
+            laravel: '^13.0'
+            testbench: '^11.0'
+            database: mysql
+          - php: '8.3'
+            laravel: '^13.0'
+            testbench: '^11.0'
+            database: pgsql
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: hookbox
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+      pgsql:
+        image: postgres:14
+        env:
+          POSTGRES_DB: hookbox
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      DB_CONNECTION: ${{ matrix.database }}
+      DB_DATABASE: ${{ matrix.database == 'sqlite' && ':memory:' || 'hookbox' }}
+      DB_HOST: 127.0.0.1
+      DB_PORT: ${{ matrix.database == 'pgsql' && '5432' || '3306' }}
+      DB_USERNAME: ${{ matrix.database == 'pgsql' && 'postgres' || 'root' }}
+      DB_PASSWORD: ''
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          extensions: dom, fileinfo, json, mbstring, pdo, pdo_mysql, pdo_pgsql, sqlite3
+
+      - name: Align Laravel test matrix
+        run: composer require --dev --no-update "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}"
+
+      - name: Update dependencies
+        run: composer update --prefer-dist --no-interaction
+
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit
+
+  quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+          extensions: dom, fileinfo, json, mbstring, pdo, sqlite3
+
+      - name: Align latest framework tooling
+        run: composer require --dev --no-update "laravel/framework:^13.0" "orchestra/testbench:^11.0"
+
+      - name: Update dependencies
+        run: composer update --prefer-dist --no-interaction
+
+      - name: Run Larastan
+        run: vendor/bin/phpstan analyse
+
+      - name: Run Pint
+        run: vendor/bin/pint --test

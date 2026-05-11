@@ -1,0 +1,17 @@
+{
+  "raw_body": "token=verification-token&team_id=T123ABC456&team_domain=acme&channel_id=C123ABC456&channel_name=alerts&user_id=U123ABC456&user_name=casey&command=%2Fdeploy&text=production&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT123ABC456%2F1234%2Fexample&trigger_id=13345224609.738474920.8088930838d88f008e0",
+  "headers": {
+    "X-Slack-Request-Timestamp": "1778361837",
+    "X-Slack-Signature": "v0=19068a34fda87ea767612a4d10181b93ebb33da7e5846f060f2ef261bd19bcbb"
+  },
+  "content_type": "application/x-www-form-urlencoded",
+  "source_config": {
+    "secret": "slack_signing_secret_123"
+  },
+  "expected": {
+    "status": "valid",
+    "reason": null,
+    "event_type": "/deploy",
+    "idempotency_key": "13345224609.738474920.8088930838d88f008e0"
+  }
+}

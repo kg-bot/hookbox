@@ -1,0 +1,12 @@
+{
+  "raw_body": "{\"signature\":{\"timestamp\":\"1710000000\",\"token\":\"8f7d6c5b4a3210fedcba9876543210ab\",\"signature\":\"ed8f007c145451151cdf81f7ac79f57dfcbbbbf5a93994dce514ef6768653d\"},\"event\":\"delivered\",\"id\":\"mailgun-event-123\",\"message\":{\"headers\":{\"message-id\":\"<20240309120000.1@example.mailgun.org>\"}},\"delivery-status\":{\"message\":\"Queued. Thank you.\",\"description\":\"\",\"code\":250}}",
+  "source_config": {
+    "secret": "mailgun_signing_key_123"
+  },
+  "expected": {
+    "status": "invalid",
+    "reason": "Missing or malformed Mailgun signature payload.",
+    "event_type": "delivered",
+    "idempotency_key": "mailgun-event-123"
+  }
+}

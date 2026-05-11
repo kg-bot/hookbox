@@ -1,0 +1,16 @@
+{
+  "raw_body": "{\"id\":\"evt_1P0eXp2eZvKYlo2Cz7sExample\",\"object\":\"event\",\"api_version\":\"2024-06-20\",\"created\":1710000300,\"data\":{\"object\":{\"id\":\"in_1P0eXp2eZvKYlo2C9Example\",\"object\":\"invoice\",\"account_country\":\"US\",\"account_name\":\"Acme Inc.\",\"amount_due\":2000,\"amount_paid\":2000,\"currency\":\"usd\",\"customer\":\"cus_PExample123\",\"customer_email\":\"jenny.rosen@example.com\",\"status\":\"paid\"}},\"livemode\":false,\"pending_webhooks\":1,\"request\":{\"id\":\"req_Expired123\",\"idempotency_key\":\"ik_Expired123\"},\"type\":\"invoice.paid\"}",
+  "headers": {
+    "Stripe-Signature": "t=1710000000,v1=2d4cf4546a29a509bff02a3775b6bf5265c8cf31b52bf9b48aa3435c736b0a86"
+  },
+  "source_config": {
+    "secret": "whsec_test_secret",
+    "tolerance": 300
+  },
+  "expected": {
+    "status": "invalid",
+    "reason": "Timestamp outside tolerance.",
+    "event_type": "invoice.paid",
+    "idempotency_key": "evt_1P0eXp2eZvKYlo2Cz7sExample"
+  }
+}

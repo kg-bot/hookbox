@@ -1,0 +1,16 @@
+{
+  "raw_body": "{\"token\":\"verification-token\",\"team_id\":\"T123ABC456\",\"api_app_id\":\"A123ABC456\",\"event\":{\"type\":\"team_join\",\"user\":\"U123ABC456\"},\"type\":\"event_callback\",\"event_id\":\"Ev123ABC456\",\"event_time\":1710000000,\"authorizations\":[{\"enterprise_id\":null,\"team_id\":\"T123ABC456\",\"user_id\":\"U999ABC456\",\"is_bot\":false,\"is_enterprise_install\":false}],\"is_ext_shared_channel\":false}",
+  "headers": {
+    "X-Slack-Request-Timestamp": "1710000000",
+    "X-Slack-Signature": "v0=826555f685e3713d8463d84b3ec00a56e59d9df650a9b92b8a1cfbb015c707fc"
+  },
+  "source_config": {
+    "secret": "slack_signing_secret_123"
+  },
+  "expected": {
+    "status": "invalid",
+    "reason": "Timestamp outside tolerance.",
+    "event_type": "team_join",
+    "idempotency_key": "Ev123ABC456"
+  }
+}

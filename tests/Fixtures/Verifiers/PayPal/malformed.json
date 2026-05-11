@@ -1,0 +1,21 @@
+{
+  "raw_body": "{\"id\":\"WH-2WR32451HC0233532-67976317FL4543714\",\"event_type\":\"PAYMENT.SALE.PENDING\",\"resource\":{\"id\":\"8002105A3449004L\"}}",
+  "headers": {
+    "PAYPAL-AUTH-ALGO": "SHA256withRSA",
+    "PAYPAL-CERT-URL": "",
+    "PAYPAL-TRANSMISSION-ID": "69cd13f0-d67a-11e5-baa3-778b53f4ae55",
+    "PAYPAL-TRANSMISSION-SIG": "",
+    "PAYPAL-TRANSMISSION-TIME": "2026-05-09T12:34:56Z"
+  },
+  "source_config": {
+    "base_url": "https://api-m.sandbox.paypal.com",
+    "client_id": "paypal-client-id",
+    "client_secret": "paypal-client-secret"
+  },
+  "expected": {
+    "status": "invalid",
+    "reason": "Missing required PayPal verification values: PAYPAL-CERT-URL, PAYPAL-TRANSMISSION-SIG, webhook_id.",
+    "event_type": "PAYMENT.SALE.PENDING",
+    "idempotency_key": "WH-2WR32451HC0233532-67976317FL4543714"
+  }
+}

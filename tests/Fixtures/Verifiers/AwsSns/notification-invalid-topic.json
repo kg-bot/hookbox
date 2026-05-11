@@ -1,0 +1,13 @@
+{
+  "raw_body": "{\"Type\":\"Notification\",\"MessageId\":\"9f0d7f06-4e9d-4376-8d09-b14e4f2dc318\",\"TopicArn\":\"arn:aws:sns:us-east-1:123456789012:other-topic\",\"Message\":\"{\\\"order_id\\\":123}\",\"Timestamp\":\"2026-05-09T21:53:52.000Z\",\"SignatureVersion\":\"2\",\"Signature\":\"unused\",\"SigningCertURL\":\"https://sns.us-east-1.amazonaws.com/SimpleNotificationService-test-cert.pem\"}",
+  "source_config": {
+    "topic_arn": "arn:aws:sns:us-east-1:123456789012:orders"
+  },
+  "expected": {
+    "status": "invalid",
+    "reason": "SNS TopicArn does not match the configured topic_arn.",
+    "event_type": "Notification",
+    "idempotency_key": "9f0d7f06-4e9d-4376-8d09-b14e4f2dc318",
+    "sent_requests": []
+  }
+}

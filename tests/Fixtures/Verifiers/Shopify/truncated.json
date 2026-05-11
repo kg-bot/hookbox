@@ -1,0 +1,17 @@
+{
+  "raw_body": "{\"id\":\"gid://shopify/Webhook/1234567890\",\"admin_graphql_api_id\":\"gid://shopify/Order/820982911946154508\",\"email\":\"jon@example.com\",\"closed_at\":null,\"created_at\":\"2024-03-01T12:00:00-05:00\",\"updated_at\":\"2024-03-01T12:05:00-05:00\",\"number\":234,\"note\":null,\"token\":\"example-token\",\"gateway\":\"bogus\",\"test\":true,\"total_price\":\"199.99\",\"currency\":\"USD\",\"financial_status\":\"paid\"}",
+  "headers": {
+    "X-Shopify-Topic": "orders/paid",
+    "X-Shopify-Webhook-Id": "d8f3f5e2-5b7d-4df5-9fd6-15a1281f2a8b",
+    "X-Shopify-Hmac-SHA256": "p+IyafAjPVpj7W5EKiBm5kdFYxfmEM58G45oz2X84A=="
+  },
+  "source_config": {
+    "secret": "shopify_secret_123"
+  },
+  "expected": {
+    "status": "invalid",
+    "reason": "Missing or malformed X-Shopify-Hmac-SHA256 header.",
+    "event_type": "orders/paid",
+    "idempotency_key": "d8f3f5e2-5b7d-4df5-9fd6-15a1281f2a8b"
+  }
+}

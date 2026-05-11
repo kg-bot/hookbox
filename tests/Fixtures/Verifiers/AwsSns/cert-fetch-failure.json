@@ -1,0 +1,19 @@
+{
+  "raw_body": "{\"Type\":\"Notification\",\"MessageId\":\"f6f92953-b1f5-4505-9697-9aa4a03e0462\",\"TopicArn\":\"arn:aws:sns:us-east-1:123456789012:orders\",\"Message\":\"{\\\"order_id\\\":999}\",\"Timestamp\":\"2026-05-09T21:53:52.000Z\",\"SignatureVersion\":\"2\",\"Signature\":\"unused\",\"SigningCertURL\":\"https://sns.us-east-1.amazonaws.com/SimpleNotificationService-test-cert.pem\"}",
+  "source_config": {
+    "topic_arn": "arn:aws:sns:us-east-1:123456789012:orders"
+  },
+  "expected": {
+    "status": "invalid",
+    "reason": "SNS certificate fetch timed out.",
+    "event_type": "Notification",
+    "idempotency_key": "f6f92953-b1f5-4505-9697-9aa4a03e0462",
+    "sent_requests": [
+      {
+        "method": "GET",
+        "url": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-test-cert.pem",
+        "options": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "raw_body": "{\"type\":\"invoice.paid\",\"data\":{\"event\":{\"name\":\"invoice.paid\"},\"delivery\":{\"key\":\"idem_standard_123\"},\"invoice\":{\"id\":\"inv_123\",\"amount\":2000}}}",
+  "headers": {
+    "webhook-id": "msg_2KWPBgLlAfxdpx2AI54pPJ85f4W",
+    "webhook-timestamp": "not-a-timestamp",
+    "webhook-signature": "v1"
+  },
+  "source_config": {
+    "secret": "whsec_rPHSDf4mJt4FEaw1C6BPP4L2ZSpRW772ywnPp4nDZTs=",
+    "tolerance": 999999999,
+    "event_type_path": "data.event.name",
+    "idempotency_key_path": "data.delivery.key"
+  },
+  "expected": {
+    "status": "invalid",
+    "reason": "Missing or malformed Standard Webhooks headers.",
+    "event_type": "invoice.paid",
+    "idempotency_key": "idem_standard_123"
+  }
+}

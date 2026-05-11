@@ -1,0 +1,22 @@
+{
+  "raw_body": "{\"Type\":\"SubscriptionConfirmation\",\"MessageId\":\"1f18f5ca-501c-4914-a620-7e3d1c9e2584\",\"Token\":\"2336412f37f...\",\"TopicArn\":\"arn:aws:sns:us-east-1:123456789012:orders\",\"Message\":\"You have chosen to subscribe to the topic.\",\"SubscribeURL\":\"https://sns.us-east-1.amazonaws.com/?Action=ConfirmSubscription&TopicArn=arn\",\"Timestamp\":\"2026-05-09T21:53:52.000Z\",\"SignatureVersion\":\"1\",\"Signature\":\"__SIGNATURE__\",\"SigningCertURL\":\"https://sns.us-east-1.amazonaws.com/SimpleNotificationService-test-cert.pem\"}",
+  "source_config": {
+    "topic_arn": "arn:aws:sns:us-east-1:123456789012:orders"
+  },
+  "transport": {
+    "certificate_body": "__CERTIFICATE__"
+  },
+  "expected": {
+    "status": "valid",
+    "reason": null,
+    "event_type": "SubscriptionConfirmation",
+    "idempotency_key": "1f18f5ca-501c-4914-a620-7e3d1c9e2584",
+    "sent_requests": [
+      {
+        "method": "GET",
+        "url": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-test-cert.pem",
+        "options": []
+      }
+    ]
+  }
+}

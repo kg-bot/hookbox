@@ -1,0 +1,16 @@
+{
+  "raw_body": "{\"id\":\"evt_1P0aBc2eZvKYlo2Cz7sExample\",\"object\":\"event\",\"api_version\":\"2024-06-20\",\"created\":1710000000,\"data\":{\"object\":{\"id\":\"in_1P0aBc2eZvKYlo2C9Example\",\"object\":\"invoice\",\"account_country\":\"US\",\"account_name\":\"Acme Inc.\",\"amount_due\":2000,\"amount_paid\":2000,\"currency\":\"usd\",\"customer\":\"cus_PExample123\",\"customer_email\":\"jenny.rosen@example.com\",\"status\":\"paid\"}},\"livemode\":false,\"pending_webhooks\":1,\"request\":{\"id\":\"req_Example123\",\"idempotency_key\":\"ik_Example123\"},\"type\":\"invoice.paid\"}",
+  "headers": {
+    "Stripe-Signature": "t=1710000000,v1=93f347453a78b377ed8620a7b7ab3c54efc203e5b0de41d820d5b020fd760540"
+  },
+  "source_config": {
+    "secret": "whsec_test_secret",
+    "tolerance": 999999999
+  },
+  "expected": {
+    "status": "valid",
+    "reason": null,
+    "event_type": "invoice.paid",
+    "idempotency_key": "evt_1P0aBc2eZvKYlo2Cz7sExample"
+  }
+}

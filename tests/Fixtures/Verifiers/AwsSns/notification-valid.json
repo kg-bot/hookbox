@@ -1,0 +1,22 @@
+{
+  "raw_body": "{\"Type\":\"Notification\",\"MessageId\":\"9f0d7f06-4e9d-4376-8d09-b14e4f2dc318\",\"TopicArn\":\"arn:aws:sns:us-east-1:123456789012:orders\",\"Subject\":\"order.created\",\"Message\":\"{\\\"order_id\\\":123}\",\"Timestamp\":\"2026-05-09T21:53:52.000Z\",\"SignatureVersion\":\"2\",\"Signature\":\"__SIGNATURE__\",\"SigningCertURL\":\"https://sns.us-east-1.amazonaws.com/SimpleNotificationService-test-cert.pem\",\"UnsubscribeURL\":\"https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe\"}",
+  "source_config": {
+    "topic_arn": "arn:aws:sns:us-east-1:123456789012:orders"
+  },
+  "transport": {
+    "certificate_body": "__CERTIFICATE__"
+  },
+  "expected": {
+    "status": "valid",
+    "reason": null,
+    "event_type": "Notification",
+    "idempotency_key": "9f0d7f06-4e9d-4376-8d09-b14e4f2dc318",
+    "sent_requests": [
+      {
+        "method": "GET",
+        "url": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-test-cert.pem",
+        "options": []
+      }
+    ]
+  }
+}

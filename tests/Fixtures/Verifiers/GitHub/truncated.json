@@ -1,0 +1,17 @@
+{
+  "raw_body": "{\"action\":\"opened\",\"installation\":{\"id\":987654},\"number\":42,\"pull_request\":{\"id\":9001,\"node_id\":\"PR_kwDOExample\"},\"repository\":{\"full_name\":\"octo-org/octo-repo\",\"id\":123456},\"sender\":{\"login\":\"octocat\",\"id\":1}}",
+  "headers": {
+    "X-GitHub-Event": "pull_request",
+    "X-GitHub-Delivery": "7f84e2d8-0d2e-4c53-89fd-a53f6f5ce701",
+    "X-Hub-Signature-256": "sha256=a8324d1749627be2e3932d3b0ce2a3636b72368da4fd7852314f74a419306e"
+  },
+  "source_config": {
+    "secret": "github_secret_123"
+  },
+  "expected": {
+    "status": "invalid",
+    "reason": "Missing or malformed X-Hub-Signature-256 header.",
+    "event_type": "pull_request",
+    "idempotency_key": "7f84e2d8-0d2e-4c53-89fd-a53f6f5ce701"
+  }
+}

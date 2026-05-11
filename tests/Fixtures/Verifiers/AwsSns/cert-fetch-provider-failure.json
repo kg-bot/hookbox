@@ -1,0 +1,19 @@
+{
+  "raw_body": "{\"Type\":\"Notification\",\"MessageId\":\"4d4dc071-ddbf-465d-bba8-08f81c89da64\",\"TopicArn\":\"arn:aws:sns:us-east-1:123456789012:orders\",\"Subject\":\"New order\",\"Message\":\"{\\\"order_id\\\":1234}\",\"Timestamp\":\"2026-05-09T21:00:00.000Z\",\"SignatureVersion\":\"2\",\"Signature\":\"ZmFrZQ==\",\"SigningCertURL\":\"https://sns.us-east-1.amazonaws.com/SimpleNotificationService-test-cert.pem\"}",
+  "source_config": {
+    "topic_arn": "arn:aws:sns:us-east-1:123456789012:orders"
+  },
+  "expected": {
+    "status": "invalid",
+    "reason": "SNS certificate request failed with HTTP 503.",
+    "event_type": "Notification",
+    "idempotency_key": "4d4dc071-ddbf-465d-bba8-08f81c89da64",
+    "sent_requests": [
+      {
+        "method": "GET",
+        "url": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-test-cert.pem",
+        "options": []
+      }
+    ]
+  }
+}
